@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% include 'base.html' %}
+
+{% block title %}
+    <title> {{ title }} </title>
+{% endblock %}
+
+<style>
+  .registration{
+    width: 400px;
+    margin: 0 auto;
+    margin-top: 50px;
+  }
+
+  .registration .user_input{
+    /* display: flex; */
+    /* justify-content: space-between; */
+    margin: 15px 0;
+    font-size: 18px;
+    font-weight: 500;
+  }
+
+  .registration .user_input input{
+    border: 1px solid #444;
+    padding: 10px;
+  }
+
+</style>
+
+{% block content %}
+<div class="regustration">
+  <form action="{% url 'accountApp:registration' %}" method="POST">
+    {% csrf_token %}
+    
+    <div class="registration">
+      <h3>Registration form</h3>
+      <div class="user_input">
+        <!-- <span>{{ form.username.label }}</span>
+        <span>{{ form.username }}</span> -->
+        <input type="text" placeholder="User Name" name="username">
+        <input type="text" placeholder="Email" name="email">
+        <input type="text" placeholder="Password" name="password1">
+        <input type="text" placeholder="Repeat Password" name="password2">
+      </div>
+      <!-- <div class="user_input">
+        <span>{{ form.email.label }}</span>
+        <span>{{ form.email }}</span>
+      </div>
+      <div class="user_input">
+        <span>{{ form.password1.label }}</span>
+        <span>{{ form.password1 }}</span>
+      </div>
+      <div class="user_input">
+        <span>{{ form.password2.label }}</span>
+        <span>{{ form.password2 }}</span>
+      </div> -->
+      <p> {{passerror}} </p>
+      <p> {{usererror}} </p>
+     
+    <button type="submit">Submit</button>
+
+    </div>
+
+
+   
+
+{% endblock %}

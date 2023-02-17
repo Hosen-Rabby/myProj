@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% include 'base.html' %}
+
+{% block title %}
+    <title> {{ title }} </title>
+{% endblock %}
+
+{% block content %}
+Registration form
+<div class="regustration">
+  <form action="{% url 'accountApp:registration' %}" method="POST">
+    {% csrf_token %}
+    
+    {{ form.username.label }}
+    {{ form.username }}
+    
+    {{ form.email.label }}
+    {{ form.email }}
+    
+    {{ form.password1.label }}
+    {{ form.password1 }}
+    
+    {{ form.password2.label }}
+    {{ form.password2 }}
+
+    {{form.errors}}
+
+    <button type="submit">Submit</button>
+{% endblock %}
